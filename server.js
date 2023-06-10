@@ -1,7 +1,7 @@
 // Import dependencies
-import express from "express";
-import axios from "axios";
-import bodyParser from "body-parser";
+const express = require("express");
+const axios = require("axios");
+const bodyParser = require("body-parser");
 
 // Create an Express app
 const app = express();
@@ -47,7 +47,6 @@ app.post("/create-payment-session", async (req, res) => {
     const ssl_user_id = "apiuser";
     const ssl_pin =
       "KABX047M4VXOEV2U3JS7X7J5BZB6LQZSKFFFORJWM1JDAP1W6WWN9WOVAM3LV7FP";
-
 
     const orderResponse = await axios.post(
       "https://api.eu.convergepay.com/orders",
@@ -105,7 +104,6 @@ app.post("/create-payment-session", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
 
 // // Import dependencies
 // import express from "express";
