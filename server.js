@@ -49,8 +49,8 @@ app.post("/create-payment-session", async (req, res) => {
 
     const paymentSessionData = {
       order: orderUrl,
-      returnUrl: "https://example.com/return",
-      cancelUrl: "https://example.com/cancel",
+      returnUrl: "https://leigonsoft.site/return",
+      cancelUrl: "https://leigonsoft.site/cancel",
       doCreateTransaction: true,
     };
 
