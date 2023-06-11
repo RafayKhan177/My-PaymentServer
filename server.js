@@ -68,12 +68,19 @@ app.post("/create-payment-session", async (req, res) => {
 
     const paymentSessionUrl = paymentSessionResponse.data.href;
 
+    // Set CORS headers explicitly
+    res.setHeader("Access-Control-Allow-Origin", "https://leigonsoft.site");
+    res.setHeader("Access-Control-Allow-Methods", "POST");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+
     res.json({ paymentUrl: paymentSessionUrl });
   } catch (error) {
     console.error("Error creating payment session:", error);
     res.status(500).json({ error: "Failed to create payment session" });
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
