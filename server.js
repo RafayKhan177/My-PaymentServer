@@ -5,6 +5,8 @@
   const app = express();
   const port = 4000;
 
+  // server is live on url: https://panel.leigonsoft.site/
+
   app.use(bodyParser.json());
 
   app.use((req, res, next) => {
