@@ -6,6 +6,12 @@ import cors from "cors";
 const app = express();
 const port = 4000;
 
+app.get("/", (req, res) => {
+  res.send(
+    "Hello, world! Oh My! Server is live, Client Site live on: 'https://leigonsoft.site'"
+  );
+});
+
 // SSL credentials
 const ssl_merchant_id = "0023024";
 const ssl_user_id = "apiuser";
@@ -21,7 +27,7 @@ app.use(
   })
 );
 
-app.options("/create-payment-session", cors()); // Enable CORS for OPTIONS request
+app.options("/create-payment-session", cors());
 
 app.post("/create-payment-session", async (req, res) => {
   try {
@@ -80,7 +86,6 @@ app.post("/create-payment-session", async (req, res) => {
     res.status(500).json({ error: "Failed to create payment session" });
   }
 });
-
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
