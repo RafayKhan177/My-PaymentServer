@@ -1,27 +1,22 @@
-// Import dependencies
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
 
-// Create an Express app
 const app = express();
-const port = 4000; // Change as needed
+const port = 443;
 
-// Middleware
 app.use(bodyParser.json());
 
-// Set up CORS headers middleware
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Origin", "https://panel.leigonsoft.site");
   res.setHeader("Access-Control-Allow-Methods", "POST");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  res.setHeader("Access-Control-Allow-Credentials", "true"); // Add this line
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   next();
 });
 
 app.options("/create-payment-session", (req, res) => {
-  // Set CORS headers for preflight request
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Origin", "https://panel.leigonsoft.site");
   res.setHeader("Access-Control-Allow-Methods", "POST");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -32,7 +27,6 @@ app.post("/create-payment-session", async (req, res) => {
   try {
     const clientIP = req.ip;
 
-    // Log the client's IP address
     console.log("Client IP:", clientIP);
 
     const orderData = {
@@ -63,8 +57,8 @@ app.post("/create-payment-session", async (req, res) => {
 
     const paymentSessionData = {
       order: orderUrl,
-      returnUrl: "https://merchant.com/return",
-      cancelUrl: "https://merchant.com/cancel",
+      returnUrl: "https://panel.leigonsoft.site/return",
+      cancelUrl: "https://panel.leigonsoft.site/cancel",
       doCreateTransaction: true,
     };
 
@@ -83,12 +77,14 @@ app.post("/create-payment-session", async (req, res) => {
 
     const paymentSessionUrls = {
       lightboxUrl: paymentSessionUrl,
-      returnUrl: "https://merchant.com/return",
-      cancelUrl: "https://merchant.com/cancel",
+      returnUrl: "https://panel.leigonsoft.site/return",
+      cancelUrl: "https://panel.leigonsoft.site/cancel",
     };
 
-    // Set CORS headers
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://panel.leigonsoft.site"
+    );
     res.setHeader("Access-Control-Allow-Methods", "POST");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -100,7 +96,6 @@ app.post("/create-payment-session", async (req, res) => {
   }
 });
 
-// Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
