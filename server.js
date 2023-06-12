@@ -80,6 +80,18 @@ app.post("/create-payment-session", async (req, res) => {
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     res.setHeader("Access-Control-Allow-Credentials", "true");
 
+    // Set error response headers
+    res.setHeader("WWW-Authenticate", 'Bearer error="invalid_token", error_description="An error occurred while attempting to decode the Jwt: Invalid JWT serialization: Missing dot delimiter(s)", error_uri="https://tools.ietf.org/html/rfc6750#section-3.1"');
+    res.setHeader("Cache-Control", "no-cache, no-store, max-age=0, must-revalidate");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+    res.setHeader("X-Frame-Options", "DENY");
+    res.setHeader("X-XSS-Protection", "1; mode=block");
+    res.setHeader("Referrer-Policy", "no-referrer");
+    res.setHeader("Connection", "close");
+
     res.json({ paymentUrl: paymentSessionUrl });
   } catch (error) {
     console.error("Error creating payment session:", error);
