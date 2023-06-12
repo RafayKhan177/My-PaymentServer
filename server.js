@@ -27,9 +27,9 @@ app.use(
   })
 );
 
-app.options("/", cors());
+app.options("/create-payment-session", cors());
 
-app.post("/", async (req, res) => {
+app.post("/create-payment-session", async (req, res) => {
   try {
     const orderData = {
       total: {
