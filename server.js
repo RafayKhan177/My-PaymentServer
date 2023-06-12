@@ -21,7 +21,7 @@ const ssl_pin =
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: "https://leigonsoft.site",
+    origin: "*",
     allowedHeaders: ["Content-Type"],
     credentials: true,
   })
