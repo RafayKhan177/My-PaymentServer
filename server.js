@@ -21,7 +21,7 @@ const ssl_pin =
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: "*",
+    origin: "https://leigonsoft.site",
     allowedHeaders: ["Content-Type"],
     credentials: true,
   })
@@ -61,7 +61,7 @@ app.post("/create-payment-session", async (req, res) => {
     };
 
     const paymentSessionResponse = await axios.post(
-      "https://api.eu.convergepay.com/payment-sessions",
+      "https://api.convergepay.com/payment-sessions",
       paymentSessionData,
       {
         headers: {
